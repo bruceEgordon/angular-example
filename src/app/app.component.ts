@@ -1,14 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, ApplicationRef } from '@angular/core';
+import {Model} from "./repository.model";
+import {Product} from "./product.model";
 
 @Component({
   selector: 'app-root',
-  template: `
-    <p>
-      app Works!
-    </p>
-  `,
+  templateUrl:"template.html",
   styles: []
 })
-export class AppComponent {
-  title = 'app';
+export class ProductComponent {
+  model: Model = new Model();
+
+  getProduct(key: number): Product {
+    return this.model.getProduct(key);
+  }
+
+  getProducts(): Product[] {
+    return this.model.getProducts();
+  }
+
+  selectedProduct: string;
+
+  getSelected(product: Product): boolean {
+    return product.name == this.selectedProduct;
+  }
 }
