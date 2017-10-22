@@ -14,13 +14,13 @@ export class ProductComponent {
     return this.model.getProduct(key);
   }
 
-  getProducts(): Product[] {
-    return this.model.getProducts();
+  newProduct: Product = new Product();
+
+  get jsonProduct() {
+    return JSON.stringify(this.newProduct);
   }
 
-  selectedProduct: string;
-
-  getSelected(product: Product): boolean {
-    return product.name == this.selectedProduct;
+  addProduct(p: Product) {
+    console.log("New Product: " + this.jsonProduct);
   }
 }
